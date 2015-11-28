@@ -9,6 +9,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './app/client/App.jsx'],
     client: 'webpack-dev-server/client?http://localhost:8080',
+     styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server','./app/client/App.scss'],
     output: {
       path: path.join(__dirname, 'app/assets'),
       filename: '[name].js'
@@ -33,7 +34,11 @@ module.exports = {
       new ExtractTextPlugin('[name].css', {
         allChunks: true
       }),
-
+      new webpack.DefinePlugin({
+              "process.env": {
+                WEBPACK: true
+              }
+            }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
       new AssetsPlugin({path: path.join(__dirname, 'app/assets'), filename: 'assets.json'})

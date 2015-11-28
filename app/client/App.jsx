@@ -1,3 +1,4 @@
 import React, { Component, PropTypes } from 'react';
 import Main from './Main.jsx'
-React.render(<Main />, document.getElementById('app'));
+let data = JSON.parse(document.querySelector('#dataObject').text);
+React.render(<Main  data={data}/>, document.getElementById('app'));

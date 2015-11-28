@@ -1,7 +1,14 @@
 require('./App.scss');
 import React, { Component, PropTypes } from 'react'
-export default class Main extends React.Component {
+
+export default class Main extends Component {
+
   render() {
-    return <h1>Hello</h1>
+
+    let{data} = this.props;
+
+    return (
+
+      <h1>Hello 22 {data.name} was here 2015</h1>)
   }
 }
