@@ -1,3 +1,10 @@
+@import 'bourbon';
+@import 'neat';
+
 body {
+  @include outer-container;
+  aside { @include span-columns(3); }
+  article { @include span-columns(9); }
   background-color: pink;
+   transform: rotate(7deg);
 }
