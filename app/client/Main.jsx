@@ -5,10 +5,12 @@ export default class Main extends Component {
 
   render() {
 
+console.log("sabeur")
+debugger;
     let{data} = this.props;
 
     return (
 
-      <h1>Hello 22 {data.name} was here 2015</h1>)
+      <h1>Hello 22 {data.name} was 2016</h1>)
   }
 }

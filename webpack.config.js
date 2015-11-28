@@ -2,36 +2,38 @@ var webpack             = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
-
+var Clean = require('clean-webpack-plugin');
 
 var sassPaths = require("node-neat").includePaths.map(function(sassPath) {
   return "includePaths[]=" + sassPath;
 }).join("&");
 
-
-
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
-    './app/client/App.jsx'],
-    client: 'webpack-dev-server/client?http://localhost:8080',
-     styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server','./app/client/App.scss'],
+    './app/client/app.js'],
+    styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server','./app/client/App.scss'],
     output: {
       path: path.join(__dirname, 'app/assets'),
       filename: '[name].js'
     },
-
+    // devtools and preLoaders to get clean es6/jsx sourceMap
+    devtool:"#inline-source-map",
+    preLoaders: [
+      {
+        test: /(.jsx|.js)?$/,
+        loader: "source-map-loader"
+      }
+    ],
     module: {
       loaders: [
         {
-          test: /.jsx?$/,
+          test: /(.jsx|.js)?$/,
           loaders: ['react-hot', 'babel'],
           exclude: /node_modules/
         },
-
-        { test: /\.scss$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!autoprefixer!sass?sourceMap&' + sassPaths) }
-          // { test: /\.scss$/,   exclude: /node_modules/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap&' + sassNeatPaths + '!autoprefixer') }
+        { test: /\.scss$/,    exclude: /(node_modules|bower_components)/, loader: ExtractTextPlugin.extract('style', 'css?sourceMap!autoprefixer!sass?sourceMap&' + sassPaths) }
       ]
     },
 
@@ -40,19 +42,26 @@ module.exports = {
         allChunks: true
       }),
       new webpack.DefinePlugin({
-              "process.env": {
-                WEBPACK: true
-              }
-            }),
+        "process.env": {
+          WEBPACK: true
+        }
+      }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
-      new AssetsPlugin({path: path.join(__dirname, 'app/assets'), filename: 'assets.json'})
+      new AssetsPlugin({path: path.join(__dirname, 'app/assets'), filename: 'assets.json'}),
+
+      // clean
+      // new Clean(['app/assets'])
     ],
 
     resolve: {
       // you can now require('file') instead of require('file.coffee')
       extensions: ['', '.js', '.json', '.jsx', '.scss']
     },
+
+
+
+
 
     devServer: {
       // contentBase: './app/assets',
