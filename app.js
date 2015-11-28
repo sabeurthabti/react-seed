@@ -1,10 +1,9 @@
 var React = require('react');
 var assets = require('./app/assets/assets.json')
-console.log(assets);
-
 var ReactApp = React.createFactory(require('./app/client/Main.jsx'));
 
 module.exports = function(app) {
+
   app.get('/', function(req, res) {
     var object = {
       name: 'sabeur'
@@ -19,6 +18,12 @@ module.exports = function(app) {
       cssHash: assets.main.css
 
     });
+  });
+
+  app.get('/data', (req, res) => {
+
+    res.json({"sabeur" : 'Data'})
+
   });
 
 }

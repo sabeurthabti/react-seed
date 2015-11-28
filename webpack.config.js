@@ -10,6 +10,7 @@ var sassPaths = require("node-neat").includePaths.map(function(sassPath) {
 
 module.exports = {
   entry: [
+    'babel-polyfill', // to enable es7
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './app/client/app.js'],
@@ -18,6 +19,7 @@ module.exports = {
       path: path.join(__dirname, 'app/assets'),
       filename: '[name].js'
     },
+    debug: true,
     // devtools and preLoaders to get clean es6/jsx sourceMap
     devtool:"#inline-source-map",
     preLoaders: [
@@ -58,10 +60,6 @@ module.exports = {
       // you can now require('file') instead of require('file.coffee')
       extensions: ['', '.js', '.json', '.jsx', '.scss']
     },
-
-
-
-
 
     devServer: {
       // contentBase: './app/assets',
