@@ -1,4 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import Main from './Main.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
+//component
+import Main from './Main.jsx';
+
 let data = JSON.parse(document.querySelector('#dataObject').text);
-React.render(<Main  data={data}/>, document.getElementById('app'));
+ReactDOM.render(<Main data={data}/>, document.getElementById('app'));
