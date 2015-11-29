@@ -1,6 +1,4 @@
 // es6 and jsx support
-
-console.log("hello")
 require("babel-core/register");
 //settings
 var SpecReporter = require('jasmine-spec-reporter');

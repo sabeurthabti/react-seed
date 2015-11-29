@@ -9,9 +9,7 @@ module.exports = function (config) {
         plugins: [
             webpack,
             'karma-jasmine',
-            'karma-chrome-launcher',
             'karma-phantomjs-launcher',
-            'karma-htmlfile-reporter',
             'karma-mocha-reporter'
         ],
         

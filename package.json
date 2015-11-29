@@ -5,10 +5,10 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "node webpack-server.js -d && node server.js",
-    "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='.utilities/jasmine'",
     "build": "webpack --progress --colors",
-    "test": "npm run test",
-    "test-react": "PHANTOMJS_BIN=./node_modules/phantomjs/bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js"
+    "test": "npm run test-node && npm run test-js",
+    "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",
+    "test-js": "PHANTOMJS_BIN=./node_modules/phantomjs/bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js"
   },
   "author": "Sabeur Thabti <thabti.sabeur@gmail.com>",
   "license": "ISC",
