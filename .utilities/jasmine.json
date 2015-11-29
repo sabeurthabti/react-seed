@@ -1,9 +1,8 @@
 
 {
-  "spec_dir": "app/server/",
+  "spec_dir": "./",
   "spec_files": [
-    "../../.utilities/boot.js",
-    "**/*.test.js"
+    ".utilities/boot.js"
   ],
   "helpers": [
     "helpers/**/*.js"
