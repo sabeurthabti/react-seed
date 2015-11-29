@@ -31,7 +31,6 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-    debugger;
     return {
         look: state.look,
         links: state.links
