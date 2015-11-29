@@ -4,9 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node webpack-server.js -d",
+    "start": "WEB_SERVER=true node webpack-server.js",
     "start-server": "node server.js",
-    "build": "webpack --progress --colors",
+    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-node && npm run test-js",
     "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",
     "test-js": "PHANTOMJS_BIN=./node_modules/phantomjs/bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js"
@@ -24,7 +24,8 @@
     "react-dom": "^0.14.3",
     "react-redux": "^3.0.1",
     "redux": "^3.0.2",
-    "redux-thunk": "^1.0.0"
+    "redux-thunk": "^1.0.0",
+    "webpack": "^1.12.9"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.0.0",
@@ -51,7 +52,7 @@
     "sass-loader": "^3.0.0",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.12.4",
-    "webpack": "^1.12.2",
+    "webpack": "^1.12.9",
     "webpack-dev-server": "^1.12.0"
   }
 }

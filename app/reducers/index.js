@@ -12,7 +12,7 @@ function look(state = {}, action = {}) {
     }
 }
 
-function data(state = {}, action = {}) {
+function links(state = {}, action = {}) {
     var links = action.links;
     switch (action.type) {
         case GET_DATA:
@@ -28,5 +28,5 @@ function data(state = {}, action = {}) {
 
 export default combineReducers({
     look,
-    data
+    links
 });

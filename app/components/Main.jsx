@@ -22,7 +22,7 @@ class Main extends Component {
         const appActions = this._appActions;
 
         let {data, links} = this.props;
-        console.log(links)
+        console.log('sab')
 
         return (
 

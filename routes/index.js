@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 
-var assets = require('../app/assets/assets.json');
+var assets = require('../assets/assets.json');
 var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
 
 
