@@ -18,5 +18,5 @@ app.use('/assets', express.static('./assets'));
 require('./routes/index')(app);
 
 app.listen(3000, function () {
-    console.log('running on port 30000')
+    console.log('running on port 3000')
 });
