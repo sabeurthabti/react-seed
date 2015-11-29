@@ -8,16 +8,24 @@ var sassPaths = require("node-neat").includePaths.map(function (sassPath) {
 }).join("&");
 
 module.exports = {
-    debug: false,
-    devtool: "#inline-source-map",
+    debug: true,
+    devtool: "source-map",
     entry: [
         'babel-polyfill',
         './app/app.js'
     ],
     output: {
         path: __dirname + '/assets/',
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: ':3000/assets/'
+
     },
+    preLoaders: [
+        {
+            test: /(.jsx|.js)?$/,
+            loader: "source-map-loader"
+        }
+    ],
     module: {
         loaders: [
             {test: /(.jsx|.js)?$/, loaders: ['babel-loader'], exclude: /node_modules/},

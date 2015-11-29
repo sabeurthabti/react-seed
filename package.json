@@ -6,7 +6,7 @@
   "scripts": {
     "start": "WEB_SERVER=true node webpack-server.js",
     "start-server": "node server.js",
-    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js --progress --colors",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-node && npm run test-js",
     "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",
     "test-js": "PHANTOMJS_BIN=./node_modules/phantomjs/bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js"

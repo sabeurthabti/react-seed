@@ -13,7 +13,7 @@ app.set('view engine', '.hbs');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
-app.use('/assets', express.static('./app/assets'));
+app.use('/assets', express.static('./assets'));
 
 require('./routes/index')(app);
 

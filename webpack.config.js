@@ -20,6 +20,7 @@ module.exports = {
         filename: '[name].js',
         publicPath: ':8080/' // when running webpack-dev-server
     },
+
     module: {
         loaders: [
             {
