@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node webpack-server.js -d && node server.js",
+    "start": "node webpack-server.js -d",
+    "start-server": "node server.js",
     "build": "webpack --progress --colors",
     "test": "npm run test-node && npm run test-js",
     "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",

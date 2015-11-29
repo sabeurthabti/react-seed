@@ -1,19 +1,45 @@
 require('./App.scss');
-import React, { Component, PropTypes } from 'react'
-import {xhrP} from '../utils/xhr.js'
-export default class Main extends Component {
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/index.js';
 
-  async componentDidMount() {
+class Main extends Component {
 
-    var results = await xhrP('get', 'http://localhost:3000/data', true);
-    console.log(results)
-  }
-
-  render() {
-
-    let{data} = this.props;
-    return (
-
-      <h1>Hello {data.name} was 2016</h1>)
-      }
+    constructor(props, context) {
+        super(props, context);
+        this._appActions = bindActionCreators(actions, props.dispatch);
     }
+
+
+    componentDidMount() {
+
+       this._appActions.fetchData();
+    }
+
+    render() {
+
+        const appActions = this._appActions;
+
+        let {data, links} = this.props;
+        console.log(links)
+
+        return (
+
+            <h1>Hello {data.name} was 2016</h1>)
+    }
+}
+
+function mapStateToProps(state) {
+    debugger;
+    return {
+        look: state.look,
+        links: state.links
+    };
+}
+
+
+export default (typeof document !== "undefined" ?
+    connect(
+        mapStateToProps
+    )(Main) : Main);
