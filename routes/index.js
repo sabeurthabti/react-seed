@@ -1,13 +1,15 @@
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 
-var assets = require('./app/assets/assets.json');
-var ReactApp = React.createFactory(require('./app/client/Main.jsx'));
+var assets = require('../app/assets/assets.json');
+var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
+
+
 
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-       
+
         var object = {
             name: 'sabeur'
         };

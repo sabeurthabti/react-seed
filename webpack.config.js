@@ -13,8 +13,8 @@ module.exports = {
         'babel-polyfill', // to enable es7
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
-        './app/client/app.js'],
-    styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server', './app/client/App.scss'],
+        './app/app.js'],
+    styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server', './app/components/App.scss'],
     output: {
         path: path.join(__dirname, 'app/assets'),
         filename: '[name].js'
