@@ -15,7 +15,8 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use('/assets', express.static('./assets'));
 console.log("HELLLLLLLLL222");
 
-app.get('/', function(req, res) {
+require('./routes/index')(app);
+
 
 res.send("hello");
 
