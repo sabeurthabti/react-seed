@@ -18,11 +18,6 @@ console.log("HELLLLLLLLL222");
 require('./routes/index')(app);
 
 
-res.send("hello");
-
-});
-
-
 app.listen(app.get('port'), function () {
     console.log('running on port 3000')
 });
