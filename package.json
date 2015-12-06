@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "node webpack-server.js",
-    "start-server": "node server.js",
+	  "build-de": "node webpack-server.js",
+    "start": "node server.js",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-node && npm run test-js",
     "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",

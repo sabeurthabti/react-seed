@@ -16,8 +16,7 @@ module.exports = {
     ],
     output: {
         path: __dirname + '/assets/',
-        filename: '[name].js',
-        publicPath: ':3000/assets/'
+        filename: '[name].js'
 
     },
     preLoaders: [

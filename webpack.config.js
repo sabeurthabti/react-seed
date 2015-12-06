@@ -57,7 +57,7 @@ module.exports = {
         hot: true,
         port: 8080,
         // publicPath: '/',
-        publicPath: 'http://localhost:3000/',
+        // publicPath: 'http://localhost:3000/',
         noInfo: false,
         stats: {colors: true},
         proxy: {
