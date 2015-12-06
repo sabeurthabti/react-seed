@@ -1,5 +1,5 @@
 require("babel-core/register");
-
+app.set('port', (process.env.PORT || 3000));
 require.extensions['.scss'] = function () {
     return null
 };
@@ -23,6 +23,6 @@ res.send("hello");
 });
 
 
-app.listen(3000, function () {
+app.listen(app.get('port'), function () {
     console.log('running on port 3000')
 });
