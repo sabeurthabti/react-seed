@@ -1,16 +1,5 @@
 import { combineReducers } from 'redux';
-import { CHANGE_LOOK, GET_DATA } from '../actions/index.js';
-
-function look(state = {}, action = {}) {
-    switch (action.type) {
-        case CHANGE_LOOK:
-            return {
-                look: action.look
-            };
-        default:
-            return state;
-    }
-}
+import { CHANGE_LOOK, GET_DATA, PUSH_DATA } from '../actions/index.js';
 
 function links(state = {}, action = {}) {
     var links = action.links;
@@ -24,9 +13,22 @@ function links(state = {}, action = {}) {
     }
 }
 
+function dataPushedResults(state = {}, action = {}) {
+  var data = action.data;
+
+  switch (action.type) {
+    case PUSH_DATA:
+      return {...data};
+      break;
+    default:
+    return  state;
+
+  }
+}
+
 
 
 export default combineReducers({
-    look,
-    links
+    links,
+    dataPushedResults
 });

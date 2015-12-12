@@ -7,27 +7,28 @@ var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
 
 module.exports = function (app) {
 
-    app.get('/', function (req, res) {
+  app.get('/', function (req, res) {
 
-        var object = {
-            name: 'sabeur'
-        };
+    var object = {
+      name: 'sabeur'
+    };
 
-        var reactHtml = ReactDOMServer.renderToString(ReactApp({data: object}));
+    var isDev = process.env.NODE_ENV !== 'production'
+    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: object}));
 
-        res.render('index', {
-            data: JSON.stringify(object),
-            html: reactHtml,
-            jsHash: 'main.js',
-            cssHash: 'main.css'
-
-        });
-    });
-
-    app.get('/data', (req, res) => {
-
-        res.json({"sabeur": 'Data'})
+    res.render('index', {
+      data: JSON.stringify(object),
+      html: reactHtml,
+      jsHash: isDev ? 'http://localhost:8080/main.js' : '/assets/main.js',
+      cssHash: isDev ? 'http://localhost:8080/main.css' : '/assets/main.css',
 
     });
+  });
+
+  app.get('/data', (req, res) => {
+
+    res.json({"fatemah": 'sabeur'})
+
+  });
 
 };

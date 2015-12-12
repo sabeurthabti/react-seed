@@ -17,8 +17,8 @@ module.exports = {
     styles: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server', './app/style/App.scss'],
     output: {
         path: path.join(__dirname, 'assets'),
-        filename: '[name].js',
-        publicPath: ':8080/' // when running webpack-dev-server
+        filename: '[name].js'
+        // publicPath: ':8080/' // when running webpack-dev-server
     },
 
     module: {
