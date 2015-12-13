@@ -14,16 +14,7 @@ class Main extends Component {
 
 
   componentDidMount() {
-    var myFirebaseRef = new Firebase("https://sabeur-links.firebaseio.com/");
-
-    this.setState({
-      firebaseRef: myFirebaseRef
-    })
-
     this._appActions.fetchData();
-
-    console.log(myFirebaseRef)
-
   }
 
   submitLink () {
@@ -36,52 +27,64 @@ class Main extends Component {
       this._appActions.pushData(data);
     }
 
+
+    handleRemoveLink(key) {
+
+console.log(key)
+
+this._appActions.removeLink(key);
+
+    }
+
+
     render() {
 
       const appActions = this._appActions;
       let {data, links, results} = this.props;
 
-      console.log(links)
       var resultsMessage ='';
       if(results && results.url) {
         resultsMessage = `Pushed ${results.url}`;
       }
 
-
-      var items = Object.keys(links).reverse().map((object, i) => {
+      var items;
+      if(links) {
+        items = Object.keys(links).reverse().map((object, i) => {
           var url = links[object].url;
           var title = links[object].title;
-          return <li key={object}> <a href={url}>{title}</a></li>;
-      });
+          return <li key={object}> <a href={url}>{title}</a> <span onClick={this.handleRemoveLink.bind(this, object)}>X</span></li>;
+          });
+        }
 
-      return (
-        <div>
-          <h1>Hello {data.name} was 2016</h1>
-          <input type="text" name="name" placeholder="Google website .." ref="name"></input>
-          <input type="url" name="url" placeholder="http://..." ref="url"></input>
-          <button onClick={this.submitLink.bind(this)}>Submit</button>
-          <div>{resultsMessage}</div>
+
+        return (
+          <div>
+            <h1>Hello {data.name} was 2016</h1>
+            <input type="text" name="name" placeholder="Google website .." ref="name"></input>
+            <input type="url" name="url" placeholder="http://..." ref="url"></input>
+            <button onClick={this.submitLink.bind(this)}>Submit</button>
+            <div>{resultsMessage}</div>
 
 
             <ul>
-        {items}
-    </ul>
-        </div>)
+              {items}
+            </ul>
+          </div>)
 
 
+        }
       }
-    }
 
-    function mapStateToProps(state) {
-      console.log('state', state)
-      return {
-        links: state.links,
-        results: state.dataPushedResults
-      };
-    }
+      function mapStateToProps(state) {
+        console.log('state', state)
+        return {
+          links: state.links,
+          results: state.dataPushedResults
+        };
+      }
 
 
-    export default (typeof document !== "undefined" ?
-    connect(
-      mapStateToProps
-    )(Main) : Main);
+      export default (typeof document !== "undefined" ?
+      connect(
+        mapStateToProps
+      )(Main) : Main);

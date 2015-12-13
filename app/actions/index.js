@@ -25,7 +25,6 @@ export function dataPushedResults(data) {
 
 export function pushData(data) {
   return function thunk(dispatch) {
-
     myFirebaseRef.child('links').push({
       url: data.url,
       title: data.name
@@ -35,7 +34,14 @@ export function pushData(data) {
   }
 }
 
-
+export function removeLink(key) {
+  return function thunk(dispatch) {
+    myFirebaseRef.child('links').child(key).remove(function(error) {
+      if(error)
+        console.log(`Error: ${error}`);
+    });
+  }
+}
 
 export function fetchData() {
 
