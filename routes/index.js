@@ -9,12 +9,9 @@ module.exports = function (app) {
 
   app.get('/', function (req, res) {
 
-    var object = {
-      name: 'sabeur'
-    };
 
     var isDev = process.env.NODE_ENV !== 'production'
-    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: object}));
+    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: {}}));
 
     res.render('index', {
       data: JSON.stringify(object),
