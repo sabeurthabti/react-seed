@@ -1,4 +1,4 @@
-# react-seed
+# react-seed (simple bookmark app)
 My react development seed project.
 
 #Features
@@ -8,3 +8,4 @@ My react development seed project.
 3. sourcemap and jsx/es6 debugging
 4. express
 5. redux
+6. Firebase
