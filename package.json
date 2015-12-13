@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-	  "webpack": "node webpack-server.js",
+    "webpack": "node webpack-server.js",
     "start": "node server.js",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-node && npm run test-js",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-core": "^5.8.25",
-    "body-parser": "^1.14.0",
+    "body-parser": "^1.14.1",
     "classnames": "^2.1.3",
     "express": "^4.10.2",
     "express-handlebars": "^2.0.1",

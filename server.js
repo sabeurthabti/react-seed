@@ -1,6 +1,6 @@
 require("babel-core/register");
 require.extensions['.scss'] = function () {
-    return null
+  return null
 };
 
 var express = require('express');
@@ -11,7 +11,16 @@ app.engine('.hbs', require('express-handlebars')({defaultLayout: 'main', extname
 app.set('view engine', '.hbs');
 console.log("HELLLLLLLLL");
 var bodyParser = require('body-parser');
-app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.text()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.use(function(err,req,res,next){
+  if(err){
+    console.log(err);
+  }
+  next();
+});
 app.use('/assets', express.static('./assets'));
 console.log("HELLLLLLLLL222");
 
@@ -19,5 +28,5 @@ require('./routes/index')(app);
 
 
 app.listen(app.get('port'), function () {
-    console.log('running on port 5000')
+  console.log('running on port 5000')
 });

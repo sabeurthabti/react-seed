@@ -33,6 +33,10 @@ class Main extends Component {
       this._appActions.removeLink(key);
     }
 
+    getMoreData() {
+      this._appActions.fetchData(10);
+    }
+
     render() {
 
       let {data, links, results} = this.props;
@@ -61,6 +65,9 @@ class Main extends Component {
             <ul>
               {items}
             </ul>
+
+            <button onClick={this.getMoreData.bind(this)}> more</button>
+
           </div>)
 
 

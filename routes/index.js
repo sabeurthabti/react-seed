@@ -17,4 +17,15 @@ module.exports = function (app) {
 
     });
   });
+
+  app.post('/new', function(req, res) {
+    if(!Object.keys(req.body))
+           res.json('all good');
+       else
+           res.json({
+               success: false,
+               error: "json invalid"
+           }, 400);
+
+  });
 };
