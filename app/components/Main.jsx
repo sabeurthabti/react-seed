@@ -22,24 +22,19 @@ class Main extends Component {
 
     let data = {
       url: url.value,
-      name : name.value }
+      name : name.value,
+      created_at: new Date().getDate()
+     }
 
       this._appActions.pushData(data);
     }
 
-
     handleRemoveLink(key) {
-
-console.log(key)
-
-this._appActions.removeLink(key);
-
+      this._appActions.removeLink(key);
     }
-
 
     render() {
 
-      const appActions = this._appActions;
       let {data, links, results} = this.props;
 
       var resultsMessage ='';
@@ -56,14 +51,12 @@ this._appActions.removeLink(key);
           });
         }
 
-
         return (
           <div>
             <input type="text" name="name" placeholder="Google website .." ref="name"></input>
             <input type="url" name="url" placeholder="http://..." ref="url"></input>
             <button onClick={this.submitLink.bind(this)}>Submit</button>
             <div>{resultsMessage}</div>
-
 
             <ul>
               {items}

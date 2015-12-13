@@ -27,7 +27,8 @@ export function pushData(data) {
   return function thunk(dispatch) {
     myFirebaseRef.child('links').push({
       url: data.url,
-      title: data.name
+      title: data.name,
+      created_at: data.created_at
     }, function(error) {
       if (error) { console.log(`Error: ${error}`)} else { dispatch(dataPushedResults(data)) }
     });
