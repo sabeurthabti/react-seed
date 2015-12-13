@@ -7,10 +7,11 @@ module.exports = function (app) {
 
   app.get('/', function (req, res) {
     var isDev = process.env.NODE_ENV !== 'production'
-    var reactHtml = ReactDOMServer.renderToString(ReactApp());
+    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: {}}));
 
     res.render('index', {
       html: reactHtml,
+      data: JSON.stringify({}),
       jsHash: isDev ? 'http://localhost:8080/main.js' : '/assets/main.js',
       cssHash: isDev ? 'http://localhost:8080/main.css' : '/assets/main.css',
 
