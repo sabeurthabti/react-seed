@@ -59,7 +59,6 @@ this._appActions.removeLink(key);
 
         return (
           <div>
-            <h1>Hello {data.name} was 2016</h1>
             <input type="text" name="name" placeholder="Google website .." ref="name"></input>
             <input type="url" name="url" placeholder="http://..." ref="url"></input>
             <button onClick={this.submitLink.bind(this)}>Submit</button>
