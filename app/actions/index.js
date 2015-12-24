@@ -13,6 +13,7 @@ export function getData(links) {
 }
 
 export function dataPushedResults(data) {
+  return {
     type: PUSH_DATA,
     data
   }
@@ -20,7 +21,7 @@ export function dataPushedResults(data) {
 
 export function pushData(data) {
   return function thunk(dispatch) {
-    myFirebaseRef.child('links').push({
+    myFirebaseRef.push({
       url: data.url,
       title: data.name,
       created_at: data.created_at
