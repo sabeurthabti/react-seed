@@ -17,6 +17,7 @@ export function dataPushedResults(data) {
     type: PUSH_DATA,
     data
   }
+}
 
 export function pushData(data) {
   return function thunk(dispatch) {
