@@ -1,11 +1,2 @@
-# react-seed (simple bookmark app)
-My react development seed project.
-
-#Features
-
-1. Hot-loading
-2. es7/es6 (babel)
-3. sourcemap and jsx/es6 debugging
-4. express
-5. redux
-6. Firebase
+# Link Saving app
+![alt text](http://i.imgur.com/FhLBv4y.png "demo")
