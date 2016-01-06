@@ -58,6 +58,7 @@ body {
 
     & .links___button {
       border-radius: 0;
+      color: #666;
       // margin-top: 60px;
       border-radius: 0;
       padding: 10px 10px 10px 10px;
@@ -76,25 +77,25 @@ body {
       border: 1px solid transparent;
       @include span-columns(1);
 
+    }
   }
-}
 
-.links__close {
-  color: red;
-  padding-left: 5px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  float: right;
-}
-
-.links__list--item {
-  padding: 5px;
-  & a {
-    font-weight: 300;
-    font-size: 22px;
+  .links__close {
+    color: red;
+    padding-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
   }
-}
+
+  .links__list--item {
+    padding: 5px;
+    & a {
+      font-weight: 300;
+      font-size: 22px;
+    }
+  }
 
 
 
