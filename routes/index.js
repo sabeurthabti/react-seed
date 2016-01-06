@@ -5,7 +5,7 @@ var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
 
 module.exports = function (app) {
 
-  app.get('/', function (req, res) {
+  app.get('*', function (req, res) {
     var isDev = process.env.NODE_ENV !== 'production'
     var reactHtml = ReactDOMServer.renderToString(ReactApp({data: {}}));
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "./node_modules/.bin/parallelshell 'node webpack-server.js' 'node server.js'",
+    "start": "./node_modules/.bin/parallelshell 'node webpack-server.js' './node_modules/.bin/nodemon --harmony server.js'",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-node && npm run test-js",
     "test-node": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'",

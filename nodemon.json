@@ -1,0 +1,14 @@
+{
+  "watch": [
+    "**/*.{js, json, jsx, yaml}",
+    "views/**/*"
+  ],
+  "ignore": [
+    "node_modules/**/*"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "localDev": true
+  },
+  "ext": "js jsx json jsx yaml"
+}
