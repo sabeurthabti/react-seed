@@ -5,13 +5,13 @@ var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
 
 module.exports = function (app) {
 
-  app.get('*', function (req, res) {
+  app.get('/:admin?', function (req, res) {
+    var isAdmin = req.params.admin ? true : false;
     var isDev = process.env.NODE_ENV !== 'production'
-    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: {}}));
-
+    var reactHtml = ReactDOMServer.renderToString(ReactApp({data: {admin: isAdmin}}));
     res.render('index', {
       html: reactHtml,
-      data: JSON.stringify({}),
+      data: JSON.stringify({admin: isAdmin}),
       jsHash: isDev ? 'http://localhost:8080/main.js' : '/assets/main.js',
       cssHash: isDev ? 'http://localhost:8080/main.css' : '/assets/main.css',
 

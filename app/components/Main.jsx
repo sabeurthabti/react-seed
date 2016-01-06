@@ -53,7 +53,8 @@ class Main extends Component {
 
   render() {
 
-    let {data, links, results} = this.props;
+    let {data, links, results, } = this.props;
+    console.log(data.admin)
 
     var resultsMessage ='';
     if(results && results.url) {
@@ -65,10 +66,12 @@ class Main extends Component {
       items = Object.keys(links).reverse().map((object, i) => {
         var url = links[object].url;
         var title = links[object].title;
+
         return (
           <li key={object} className="links__list--item">
             <a href={url}>{title}</a>
-            <span onClick={this.handleRemoveLink.bind(this, object)} className="links__close">X</span></li>);
+            {data.admin ? <span onClick={this.handleRemoveLink.bind(this, object)} className="links__close">X</span> : <span></span> }
+            </li>);
             });
           }
 

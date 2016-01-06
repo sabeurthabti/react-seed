@@ -9,7 +9,6 @@ app.set('port', (process.env.PORT || 5000));
 app.set('views', require('path').join(__dirname, '/views'));
 app.engine('.hbs', require('express-handlebars')({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
-console.log("HELLLLLLLLL");
 var bodyParser = require('body-parser');
 app.use(bodyParser.text()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,10 +21,7 @@ app.use(function(err,req,res,next){
   next();
 });
 app.use('/assets', express.static('./assets'));
-console.log("HELLLLLLLLL222");
-
 require('./routes/index')(app);
-
 
 app.listen(app.get('port'), function () {
   console.log('running on port 5000')
