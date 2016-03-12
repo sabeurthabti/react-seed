@@ -3,7 +3,7 @@ javascript:(function(){
   if(typeof (window.jQuery || window.$) !== "undefined") {
     var script = document.createElement( 'script' );
     script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
-    script.onload=releasetheKraken;
+    script.onload=bookMarkIt;
     script.type = "text/javascript";
     document.body.appendChild(script);
   }  else {
@@ -11,7 +11,14 @@ javascript:(function(){
   }
 
   function bookMarkIt() {
-    $.post('https://sabeurlinks.herokuapp.com/new', {title: , ''})
+    $.post(location.protocol + '//sabeurlinks.herokuapp.com/new',
+    {title: document.title.substring(0, 30), url: window.location.href}
+  ).done(function(data) {
+    console.log(data);
+  })
+  .fail(function(err) {
+console.log('error', err);
+})
   }
 
 })();
