@@ -10,8 +10,9 @@ app.set('views', require('path').join(__dirname, '/views'));
 app.engine('.hbs', require('express-handlebars')({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 var bodyParser = require('body-parser');
-app.use(bodyParser.text()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 
 
 app.use(function(err,req,res,next){
