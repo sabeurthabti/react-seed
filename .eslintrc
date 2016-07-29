@@ -1,0 +1,44 @@
+{
+  "parser": "babel-eslint",
+  "env": { "es6": true, "node": true, "browser": true, "jasmine": true },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-delete-var": 2,
+    "no-console": 0,
+    "no-debugger": 1,
+    "no-unreachable": 2,
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": true }],
+    "func-names": 1,
+    "no-duplicate-case": 0,
+    "no-var": 0,
+    "camelcase": [0, { "properties": "always" }],
+    "no-unused-vars": [
+      0,
+      {
+        "vars": "all",
+        "args": "after-used"
+      }
+    ],
+    "semi": [
+      1,
+      "always"
+    ],
+    "strict": 0
+  },
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "ignore": "**/*.test.js",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  }
+}

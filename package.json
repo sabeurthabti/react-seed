@@ -4,10 +4,14 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "./node_modules/.bin/parallelshell 'node webpack-server.js' './node_modules/.bin/nodemon server.js'",
+    "start": "./node_modules/.bin/parallelshell 'node webpack-server.js' './node_modules/.bin/nodemon index.js'",
+    "build:dev": "NODE_ENV=development ./node_modules/.bin/webpack -p --config webpack.config.js --progress --colors",
+    "build:watch": "UV_THREADPOOL_SIZE=64 NODE_ENV=development webpack --config webpack.config.js --watch --debug --progress --display-error-details",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p --config webpack.production.config.js --progress --colors",
     "test": "npm run test-js",
+    "lint": "eslint ./server --ext .js",
     "test-js": "NODE_ENV=test ./node_modules/.bin/jasmine JASMINE_CONFIG_PATH='./.utilities/jasmine.json'"
+
   },
   "author": "Sabeur Thabti <thabti.sabeur@gmail.com>",
   "license": "ISC",
@@ -37,6 +41,9 @@
     "babel-cli": "^6.8.0",
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.4",
+    "eslint": "^2.8.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^5.0.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-require": "^2.1.0",
     "babel-plugin-transform-class-properties": "^6.8.0",

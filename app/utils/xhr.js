@@ -8,14 +8,14 @@ export function xhr(method, url, callback, async) {
 }
 
 export function xhrP(method, url, async) {
-    return new Promise(function (resolve,reject) {
+    return new Promise((resolve,reject) => {
         var request = new XMLHttpRequest();
 
-        request.addEventListener('load', function() {
+        request.addEventListener('load', () => {
           return resolve(this.responseText);
         }, false);
 
-        request.addEventListener('error', function() {
+        request.addEventListener('error', () => {
            return reject(this.statusText);
         }, false);
 

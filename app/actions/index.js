@@ -16,7 +16,7 @@ export function dataPushedResults(data) {
   return {
     type: PUSH_DATA,
     data
-  }
+  };
 }
 
 export function pushData(data) {
@@ -25,28 +25,28 @@ export function pushData(data) {
       url: data.url,
       title: data.name,
       created_at: data.created_at
-    }, function(error) {
-      if (error) { console.log(`Error: ${error}`)} else { dispatch(dataPushedResults(data)) }
+    }, (error) => {
+      if (error) { console.log(`Error: ${error}`);} else { dispatch(dataPushedResults(data)); }
     });
-  }
+  };
 }
 
 export function removeLink(key) {
   return function thunk(dispatch) {
-    myFirebaseRef.child(key).remove(function(error) {
+    myFirebaseRef.child(key).remove((error) => {
       if(error)
         console.log(`Error: ${error}`);
     });
-  }
+  };
 }
 
 export function fetchData(limit = 0) {
 
   return async function thunk(dispatch) {
-    myFirebaseRef.on("value", function(snapshot) {
+    myFirebaseRef.on("value", (snapshot) => {
           dispatch(getData(snapshot.val()));
 
-    }, function (errorObject) {
+    },  (errorObject) => {
       console.log("The read failed: " + errorObject.code);
     });
 };

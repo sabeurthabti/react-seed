@@ -19,7 +19,6 @@ function dataPushedResults(state = {}, action = {}) {
   switch (action.type) {
     case PUSH_DATA:
       return {...data};
-      break;
     default:
     return  state;
 

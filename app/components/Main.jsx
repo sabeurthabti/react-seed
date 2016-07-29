@@ -12,12 +12,11 @@ export class Main extends Component {
     this._appActions = bindActionCreators(actions, props.dispatch);
   }
 
-
   componentDidMount() {
     document.body.addEventListener('keydown', (e)=> {
       var ENTER = 13;
       if( e.keyCode == ENTER ) {
-        this.submitLink()
+        this.submitLink();
       }
     }, false);
 
@@ -33,13 +32,13 @@ export class Main extends Component {
       url: url.value,
       name : name.value,
       created_at: new Date().getDate()
-    }
+    };
 
 
     if(data.url.length > 0 && data.name.length > 0) {
       this._appActions.pushData(data);
     } else {
-      console.error('Error, please provide a url and title')
+      console.error('Error, please provide a url and title');
     }
   }
 
@@ -90,10 +89,8 @@ export class Main extends Component {
             </ul>
           </div>
         </div>
-      )
-
-
-    }
+      );
+    };
   }
 
   function mapStateToProps(state) {

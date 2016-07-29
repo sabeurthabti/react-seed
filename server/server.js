@@ -1,33 +1,32 @@
-require("babel-core/register");
-require.extensions['.scss'] = function () {
-  return null
-};
+import express from 'express';
+import routes from './routes';
 
-var express = require('express');
 var app = module.exports = express();
 app.set('port', (process.env.PORT || 5000));
+
 app.set('views', require('path').join(__dirname, '/views'));
-app.engine('.hbs', require('express-handlebars')({defaultLayout: 'main', extname: '.hbs'}));
+app.engine('.hbs', require('express-handlebars')({defaultLayout: 'main', extname: '.hbs', layoutsDir:'server/views/layouts',}));
 app.set('view engine', '.hbs');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
 
-app.use(function(err,req,res,next){
+app.use((err,req,res,next) => {
   if(err){
     console.log(err);
   }
   next();
 });
 app.use('/assets', express.static('./assets'));
-require('./routes/index')(app);
 
-app.listen(app.get('port'), function () {
-  console.log('running on port 5000')
+routes(app);
+
+app.listen(app.get('port'), () => {
+  console.log('running on port 5000');
 });
