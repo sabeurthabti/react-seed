@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/index.js';
 import Firebase from 'firebase';
 
-class Main extends Component {
+export class Main extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -54,7 +54,6 @@ class Main extends Component {
   render() {
 
     let {data, links, results, } = this.props;
-    console.log(data.admin)
 
     var resultsMessage ='';
     if(results && results.url) {
@@ -71,42 +70,42 @@ class Main extends Component {
           <li key={object} className="links__list--item">
             <a href={url}>{title}</a>
             {data.admin ? <span onClick={this.handleRemoveLink.bind(this, object)} className="links__close">X</span> : <span></span> }
-            </li>);
-            });
-          }
-
-          return (
-            <div>
-              <div className="links_form">
-                <input className="form__controls" type="text" name="name" placeholder="Name" ref="name"></input>
-                <input className="form__controls" type="url" name="url" placeholder="URL" ref="url"></input>
-                <button onClick={this.submitLink.bind(this)} className="links___button">Submit</button>
-              </div>
-              <div className="links__main">
-
-                <div>{resultsMessage}</div>
-
-                <ul className="links__list">
-                  {items}
-                </ul>
-              </div>
-            </div>
-          )
-
-
-        }
+          </li>);
+        });
       }
 
-      function mapStateToProps(state) {
-        // console.log('state', state)
-        return {
-          links: state.links,
-          results: state.dataPushedResults
-        };
-      }
+      return (
+        <div>
+          <div className="links_form">
+            <input className="form__controls" type="text" name="name" placeholder="Name" ref="name"></input>
+            <input className="form__controls" type="url" name="url" placeholder="URL" ref="url"></input>
+            <button onClick={this.submitLink.bind(this)} className="links___button">Submit</button>
+          </div>
+          <div className="links__main">
+
+            <div>{resultsMessage}</div>
+
+            <ul className="links__list">
+              {items}
+            </ul>
+          </div>
+        </div>
+      )
 
 
-      export default (typeof document !== "undefined" ?
-      connect(
-        mapStateToProps
-      )(Main) : Main);
+    }
+  }
+
+  function mapStateToProps(state) {
+    // console.log('state', state)
+    return {
+      links: state.links,
+      results: state.dataPushedResults
+    };
+  }
+
+
+  export default (typeof document !== "undefined" ?
+  connect(
+    mapStateToProps
+  )(Main) : Main);

@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 var Firebase = require('firebase');
 
-var ReactApp = React.createFactory(require('../app/components/Main.jsx'));
+var ReactApp = React.createFactory(require('../app/components/Main.jsx').default);
 
 module.exports = function (app) {
 
@@ -22,7 +22,6 @@ module.exports = function (app) {
   app.post('/new', function(req, res) {
     var body = req.body;
     if(body) {
-      console.log(body)
       var myFirebaseRef = new Firebase("https://sabeur-links.firebaseio.com/links");
 
       myFirebaseRef.push({
@@ -37,6 +36,6 @@ module.exports = function (app) {
         }
       })
     }
-    
+
   });
 };

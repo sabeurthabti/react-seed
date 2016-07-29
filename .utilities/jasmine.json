@@ -3,8 +3,7 @@
   "spec_dir": "./",
   "spec_files": [
     ".utilities/boot.js",
-    "**/__test__/*.test.js",
-    "!app/**/*"
+    "./app/**/*.test.js"
   ],
   "helpers": [
     "helpers/**/*.js"
